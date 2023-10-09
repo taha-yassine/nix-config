@@ -56,29 +56,29 @@
   };
 
   # Applications
-  # programs.firefox = {
-  #   enable = true;
-  #   profiles.default = {
-  #     id = 0;
-  #     bookmarks = [
-  #       {
-  #         name = "NixOS Search";
-  #         url = "https://search.nixos.org/packages";
-  #       }
-  #       {
-  #         name = "Home Manager Config options";
-  #         url = "https://nix-community.github.io/home-manager/options.html";
-  #       }
-  #     ];
-  #     settings = {
-  #       "browser.download.useDownloadDir" = false;
-  #     };
-  #     # extensions = with pkgs.inputs.firefox-addons; [ # See https://github.com/nix-community/nur-combined/tree/master/repos/rycee
-  #     #   ublock-origin
-  #     #   bitwarden
-  #     # ];
-  #   };
-  # };
+  programs.firefox = {
+    enable = true;
+    # profiles.default = {
+    #   id = 0;
+    #   bookmarks = [
+    #     {
+    #       name = "NixOS Search";
+    #       url = "https://search.nixos.org/packages";
+    #     }
+    #     {
+    #       name = "Home Manager Config options";
+    #       url = "https://nix-community.github.io/home-manager/options.html";
+    #     }
+    #   ];
+    #   settings = {
+    #     "browser.download.useDownloadDir" = false;
+    #   };
+    #   # extensions = with pkgs.inputs.firefox-addons; [ # See https://github.com/nix-community/nur-combined/tree/master/repos/rycee
+    #   #   ublock-origin
+    #   #   bitwarden
+    #   # ];
+    # };
+  };
   programs.thunderbird = {
     enable = true;
     profiles.default = {
