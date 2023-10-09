@@ -47,19 +47,96 @@
     };
   };
 
-  # TODO: Set your username
   home = {
-    username = "your-username";
-    homeDirectory = "/home/your-username";
+    username = "tyassine";
+    homeDirectory = "/home/tyassine";
+    shellAliases = {
+      "la" = "ls -la";
+    };
   };
 
-  # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
-  # home.packages = with pkgs; [ steam ];
+  # Applications
+  # programs.firefox = {
+  #   enable = true;
+  #   profiles.default = {
+  #     id = 0;
+  #     bookmarks = [
+  #       {
+  #         name = "NixOS Search";
+  #         url = "https://search.nixos.org/packages";
+  #       }
+  #       {
+  #         name = "Home Manager Config options";
+  #         url = "https://nix-community.github.io/home-manager/options.html";
+  #       }
+  #     ];
+  #     settings = {
+  #       "browser.download.useDownloadDir" = false;
+  #     };
+  #     # extensions = with pkgs.inputs.firefox-addons; [ # See https://github.com/nix-community/nur-combined/tree/master/repos/rycee
+  #     #   ublock-origin
+  #     #   bitwarden
+  #     # ];
+  #   };
+  # };
+  programs.thunderbird = {
+    enable = true;
+    profiles.default = {
+      isDefault = true;
+      settings = {
+        "mail.compose.default_to_paragraph" = false;
+      };
+    };
+  };
+  programs.texlive = {
+    enable = true;
+    extraPackages = tpkgs: { inherit (tpkgs) scheme-full; };
+  };
+  programs.vscode = {
+    enable = true;
+    extensions = with pkgs.vscode-extensions; [
+      ms-python.python
+      ms-azuretools.vscode-docker
+      ms-vscode-remote.remote-ssh
+      james-yu.latex-workshop
+      jnoortheen.nix-ide
+      mhutchie.git-graph
+      eamodio.gitlens
+      streetsidesoftware.code-spell-checker
+      arrterian.nix-env-selector
+    ];
+    userSettings = {
+      "editor.wordWrap" = "on";
+      "workbench.colorTheme" = "Default Dark Modern";
+      "window.zoomLevel" = 1;
+      "latex-workshop.intellisense.citation.type" = "browser";
+      "[nix]" = {
+        "editor.insertSpaces" = true;
+        "editor.tabSize" = 2;
+      };
+
+    };
+  };
+
+  home.packages = (with pkgs; [ # Stable
+    #teams TODO: Package is marked as insecure. Needs investigation. 
+  ]) ++ (with pkgs.unstable; [ # Unstable
+    zoom-us
+    jabref
+    inkscape-with-extensions
+    discord
+    spotify
+    emote
+    libsForQt5.okular 
+  ]);
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
-  programs.git.enable = true;
+  programs.git = {
+    userEmail = "yassinetaha1997@gmail.com";
+    userName = "Taha YASSINE";
+    enable = true;
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
