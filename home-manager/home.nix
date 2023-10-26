@@ -10,6 +10,9 @@
 }: {
   # You can import other home-manager modules here
   imports = [
+    # Hyperland
+    inputs.hyprland.homeManagerModules.default
+
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
 
@@ -58,26 +61,30 @@
   # Applications
   programs.firefox = {
     enable = true;
-    # profiles.default = {
-    #   id = 0;
-    #   bookmarks = [
-    #     {
-    #       name = "NixOS Search";
-    #       url = "https://search.nixos.org/packages";
-    #     }
-    #     {
-    #       name = "Home Manager Config options";
-    #       url = "https://nix-community.github.io/home-manager/options.html";
-    #     }
-    #   ];
-    #   settings = {
-    #     "browser.download.useDownloadDir" = false;
-    #   };
-    #   # extensions = with pkgs.inputs.firefox-addons; [ # See https://github.com/nix-community/nur-combined/tree/master/repos/rycee
-    #   #   ublock-origin
-    #   #   bitwarden
-    #   # ];
-    # };
+    profiles.default = {
+      id = 0;
+      bookmarks = [
+        {
+          name = "NixOS Search";
+          url = "https://search.nixos.org/packages";
+        }
+        {
+          name = "Home Manager Config options";
+          url = "https://nix-community.github.io/home-manager/options.html";
+        }
+        {
+          name = "IEEE INSA";
+          url = "javascript:(function(){window.open('https://ieeexplore-ieee-org.rproxy.insa-rennes.fr'+location.pathname+location.search,'_blank')})();";
+        }
+      ];
+      settings = {
+        "browser.download.useDownloadDir" = false;
+      };
+      extensions = with inputs.firefox-addons.packages.${pkgs.system}; [ # See https://github.com/nix-community/nur-combined/tree/master/repos/rycee
+        ublock-origin
+        bitwarden
+      ];
+    };
   };
   programs.thunderbird = {
     enable = true;
@@ -128,6 +135,8 @@
     spotify
     emote
     libsForQt5.okular 
+    htop
+    libreoffice-fresh
   ]);
 
   # Enable home-manager and git
@@ -137,6 +146,9 @@
     userName = "Taha YASSINE";
     enable = true;
   };
+
+  # Hyprland
+  wayland.windowManager.hyprland.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
