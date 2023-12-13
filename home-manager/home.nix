@@ -133,6 +133,7 @@
     python311
     jabref
     (inkscape-with-extensions.override {inkscapeExtensions = [ inkscape-extensions.textext ];})
+    olive-editor
     discord
     spotify
     emote
