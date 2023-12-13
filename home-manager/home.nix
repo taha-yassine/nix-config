@@ -139,6 +139,7 @@
     libsForQt5.okular 
     htop
     libreoffice-fresh
+    dnsutils
   ]);
 
   # Enable home-manager and git
