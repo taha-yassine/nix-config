@@ -130,6 +130,7 @@
     #teams TODO: Package is marked as insecure. Needs investigation. 
   ]) ++ (with pkgs.unstable; [ # Unstable
     zoom-us
+    python311
     jabref
     inkscape-with-extensions
     discord
