@@ -10,8 +10,8 @@
 }: {
   # You can import other home-manager modules here
   imports = [
-    # Hyperland
-    inputs.hyprland.homeManagerModules.default
+    # Hyprland
+    # inputs.hyprland.homeManagerModules.default
 
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
@@ -168,6 +168,7 @@
     userEmail = "yassinetaha1997@gmail.com";
     userName = "Taha YASSINE";
     enable = true;
+  };
   # ZSH
   programs.zsh = {
     enable = true;
@@ -184,7 +185,7 @@
   };
 
   # Hyprland
-  wayland.windowManager.hyprland.enable = true;
+  # wayland.windowManager.hyprland.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

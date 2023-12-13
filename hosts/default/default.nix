@@ -19,9 +19,6 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
-
-    # Import your generated (nixos-generate-config) hardware configuration
-    ./hardware-configuration.nix
   ];
 
   nixpkgs = {
@@ -142,7 +139,6 @@
   systemd.services."autovt@tty1".enable = false;
 
   # Networking configuration
-  networking.hostName = "matebook";
   networking.networkmanager.enable = true;
 
   # Bootloader
