@@ -132,7 +132,7 @@
     zoom-us
     python311
     jabref
-    inkscape-with-extensions
+    (inkscape-with-extensions.override {inkscapeExtensions = [ inkscape-extensions.textext ];})
     discord
     spotify
     emote
