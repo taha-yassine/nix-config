@@ -79,6 +79,7 @@
       ];
       settings = {
         "browser.download.useDownloadDir" = false;
+        "signon.rememberSignons" = false; # Disable built-in password manager
       };
       extensions = with inputs.firefox-addons.packages.${pkgs.system}; [ # See https://github.com/nix-community/nur-combined/tree/master/repos/rycee
         ublock-origin
