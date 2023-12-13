@@ -91,17 +91,27 @@
     LC_TIME = "fr_FR.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  # Graphics
+  services.xserver = 
+  {
+    enable = true; # Enable the X11 windowing system.
+
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+
 
   # Configure keymap in X11
-  services.xserver = {
     layout = "fr";
     xkbVariant = "";
+
+    # Enable automatic login for the user.
+    displayManager.autoLogin.enable = true;
+    displayManager.autoLogin.user = "tyassine";
+
+    # Enable touchpad support (enabled default in most desktopManager).
+    # libinput.enable = true;
   };
 
   # Configure console keymap
@@ -126,13 +136,6 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "tyassine";
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
