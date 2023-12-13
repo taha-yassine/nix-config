@@ -146,6 +146,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  programs = {
+    zsh.enable = true; # needs to be enabled system-wide, even if it's already enabled in Home Manager
+  };
+
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
     tyassine = {
@@ -158,6 +162,7 @@
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
       extraGroups = ["wheel" "networkmanager"];
+      shell = pkgs.zsh;
     };
   };
 

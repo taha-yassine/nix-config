@@ -145,6 +145,19 @@
     userEmail = "yassinetaha1997@gmail.com";
     userName = "Taha YASSINE";
     enable = true;
+  # ZSH
+  programs.zsh = {
+    enable = true;
+    shellAliases = {
+      ll = "ls -l";
+      update = "sudo nixos-rebuild switch";
+    };
+    zplug = {
+      enable = true;
+      plugins = [
+        { name = "dracula/zsh"; tags = ["as:theme"]; }
+      ];
+    };
   };
 
   # Hyprland
