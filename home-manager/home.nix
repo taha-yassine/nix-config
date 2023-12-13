@@ -65,6 +65,13 @@
       id = 0;
       bookmarks = [
         {
+          name = "Toolbar";
+          toolbar = true;
+          bookmarks = [
+            {
+              name = "NixOs";
+              bookmarks = [
+                {
           name = "NixOS Search";
           url = "https://search.nixos.org/packages";
         }
@@ -73,8 +80,20 @@
           url = "https://nix-community.github.io/home-manager/options.html";
         }
         {
+                  name = "Nix Starter Config - Misterio77";
+                  url = "https://github.com/Misterio77/nix-starter-configs";
+                }
+                {
+                  name = "Firefox Config";
+                  url = "https://kb.mozillazine.org/Category:Preferences";
+                }
+              ];
+            }
+            {
           name = "IEEE INSA";
           url = "javascript:(function(){window.open('https://ieeexplore-ieee-org.rproxy.insa-rennes.fr'+location.pathname+location.search,'_blank')})();";
+        }
+      ];
         }
       ];
       settings = {
