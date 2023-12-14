@@ -98,6 +98,8 @@
       ];
       settings = {
         "browser.download.useDownloadDir" = false;
+        "browser.toolbars.bookmarks.visibility" = "always";
+        "browser.startup.page" = 3; # Resume the previous session at startup
         "signon.rememberSignons" = false; # Disable built-in password manager
       };
       extensions = with inputs.firefox-addons.packages.${pkgs.system}; [ # See https://github.com/nix-community/nur-combined/tree/master/repos/rycee
@@ -114,6 +116,7 @@
         "mail.compose.default_to_paragraph" = false;
       };
     };
+
   };
   programs.texlive = {
     enable = true;
@@ -160,6 +163,7 @@
     htop
     libreoffice-fresh
     dnsutils
+    slack
   ]);
 
   # Enable home-manager and git
