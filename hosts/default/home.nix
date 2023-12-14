@@ -173,6 +173,8 @@
     userName = "Taha YASSINE";
     enable = true;
   };
+  programs.git-credential-oauth.enable = true;
+
   # ZSH
   programs.zsh = {
     enable = true;
