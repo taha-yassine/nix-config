@@ -190,6 +190,13 @@
     };
   };
 
+   xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "application/pdf" = ["org.gnome.Evince.desktop"];
+    };
+   };
+   
   # Hyprland
   # wayland.windowManager.hyprland.enable = true;
 
