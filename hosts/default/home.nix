@@ -19,6 +19,7 @@
     # You can also split up your configuration and import pieces of it here:
     # ./hyprland.nix
     ./vscode.nix
+    ./firefox.nix
   ];
 
   nixpkgs = {
@@ -57,55 +58,6 @@
   };
 
   # Applications
-  programs.firefox = {
-    enable = true;
-    profiles.default = {
-      id = 0;
-      bookmarks = [
-        {
-          name = "Toolbar";
-          toolbar = true;
-          bookmarks = [
-            {
-              name = "NixOs";
-              bookmarks = [
-                {
-          name = "NixOS Search";
-          url = "https://search.nixos.org/packages";
-        }
-        {
-          name = "Home Manager Config options";
-          url = "https://nix-community.github.io/home-manager/options.html";
-        }
-        {
-                  name = "Nix Starter Config - Misterio77";
-                  url = "https://github.com/Misterio77/nix-starter-configs";
-                }
-                {
-                  name = "Firefox Config";
-                  url = "https://kb.mozillazine.org/Category:Preferences";
-                }
-              ];
-            }
-            {
-          name = "IEEE INSA";
-          url = "javascript:(function(){window.open('https://ieeexplore-ieee-org.rproxy.insa-rennes.fr'+location.pathname+location.search,'_blank')})();";
-        }
-      ];
-        }
-      ];
-      settings = {
-        "browser.download.useDownloadDir" = false;
-        "browser.toolbars.bookmarks.visibility" = "always";
-        "browser.startup.page" = 3; # Resume the previous session at startup
-        "signon.rememberSignons" = false; # Disable built-in password manager
-      };
-      extensions = with inputs.firefox-addons.packages.${pkgs.system}; [ # See https://github.com/nix-community/nur-combined/tree/master/repos/rycee
-        ublock-origin
-        bitwarden
-      ];
-    };
-  };
   programs.thunderbird = {
     enable = true;
     profiles.default = {
