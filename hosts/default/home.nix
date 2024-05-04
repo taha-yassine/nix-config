@@ -18,7 +18,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./hyprland.nix
-    # ./nvim.nix
+    ./vscode.nix
   ];
 
   nixpkgs = {
@@ -119,31 +119,6 @@
   programs.texlive = {
     enable = true;
     extraPackages = tpkgs: { inherit (tpkgs) scheme-full; };
-  };
-  programs.vscode = {
-    enable = true;
-    extensions = with pkgs.vscode-extensions; [
-      ms-python.python
-      ms-azuretools.vscode-docker
-      ms-vscode-remote.remote-ssh
-      james-yu.latex-workshop
-      jnoortheen.nix-ide
-      mhutchie.git-graph
-      eamodio.gitlens
-      streetsidesoftware.code-spell-checker
-      arrterian.nix-env-selector
-    ];
-    userSettings = {
-      "editor.wordWrap" = "on";
-      "workbench.colorTheme" = "Default Dark Modern";
-      "window.zoomLevel" = 1;
-      "latex-workshop.intellisense.citation.type" = "browser";
-      "[nix]" = {
-        "editor.insertSpaces" = true;
-        "editor.tabSize" = 2;
-      };
-
-    };
   };
 
   home.packages = (with pkgs; [ # Stable
