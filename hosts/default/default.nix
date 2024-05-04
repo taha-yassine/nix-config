@@ -70,8 +70,8 @@
     };
   };
 
-  # Set your time zone.
-  time.timeZone = "Europe/Paris";
+  # Automatic time zone
+  services.automatic-timezoned.enable = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
