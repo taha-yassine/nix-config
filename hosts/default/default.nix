@@ -110,6 +110,7 @@
     # Enable touchpad support (enabled default in most desktopManager).
     # libinput.enable = true;
   };
+  environment.sessionVariables.NIXOS_OZONE_WL = "1"; # For native Wayland support in electron based apps; see https://nixos.wiki/wiki/Visual_Studio_Code
 
   # Configure console keymap
   console.keyMap = "fr";
