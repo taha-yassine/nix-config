@@ -10,9 +10,6 @@
 }: {
   # You can import other home-manager modules here
   imports = [
-    # Hyprland
-    # inputs.hyprland.homeManagerModules.default
-
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
 
@@ -20,6 +17,7 @@
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
+    # ./hyprland.nix
     # ./nvim.nix
   ];
 
@@ -195,10 +193,7 @@
     defaultApplications = {
       "application/pdf" = ["org.gnome.Evince.desktop"];
     };
-   };
-   
-  # Hyprland
-  # wayland.windowManager.hyprland.enable = true;
+    };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

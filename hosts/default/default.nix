@@ -147,6 +147,7 @@
 
   programs = {
     zsh.enable = true; # needs to be enabled system-wide, even if it's already enabled in Home Manager
+    hyprland.enable = true;
   };
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
