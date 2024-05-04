@@ -2,6 +2,7 @@
   imports = [
     ../default
     ./hardware-configuration.nix
+    ../default/vm.nix
   ];
 
   virtualisation.docker.enable = true;
