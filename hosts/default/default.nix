@@ -151,6 +151,10 @@
     hyprland.enable = true;
   };
 
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "Hack" ]; })
+  ];
+
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
     tyassine = {
