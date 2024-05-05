@@ -131,8 +131,9 @@
     enable = true;
     defaultApplications = {
       "application/pdf" = ["org.gnome.Evince.desktop"];
-    };
-    };
+  # Force mimeapps.list to be rewritten; useful when other programs change it.
+  xdg.configFile."mimeapps.list".force = true;
+
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
