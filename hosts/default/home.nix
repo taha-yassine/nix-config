@@ -72,6 +72,7 @@
       isDefault = true;
       settings = {
         "mail.compose.default_to_paragraph" = false;
+        "msgcompose.default_colors" = false;
       };
     };
 
