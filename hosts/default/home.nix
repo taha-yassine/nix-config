@@ -92,7 +92,6 @@
     spotify
     emote
     libsForQt5.okular 
-    htop
     libreoffice-fresh
     dnsutils
     slack
@@ -106,6 +105,11 @@
     enable = true;
   };
   programs.git-credential-oauth.enable = true;
+
+  # btop
+  programs.btop = {
+    enable = true;
+	};
 
   # ZSH
   programs.zsh = {
