@@ -6,8 +6,16 @@
   lib,
   config,
   pkgs,
+  unstable,
   ...
 }: {
+
+  # Binds nixpkgs-unstable to unstable
+  _module.args.unstable = import inputs.nixpkgs-unstable {
+    inherit (pkgs) system;
+    config.allowUnfree = true;
+  };
+
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
@@ -28,7 +36,7 @@
       # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.additions
       outputs.overlays.modifications
-      outputs.overlays.unstable-packages
+      # outputs.overlays.unstable-packages
 
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
@@ -74,8 +82,7 @@
   };
 
   home.packages = (with pkgs; [ # Stable
-    #teams TODO: Package is marked as insecure. Needs investigation. 
-  ]) ++ (with pkgs.unstable; [ # Unstable
+  ]) ++ (with unstable; [ # Unstable
     zoom-us
     python311
     jabref
