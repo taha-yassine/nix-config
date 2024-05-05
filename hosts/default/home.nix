@@ -127,10 +127,15 @@
     };
   };
 
+  # Default apps
    xdg.mimeApps = {
     enable = true;
     defaultApplications = {
       "application/pdf" = ["org.gnome.Evince.desktop"];
+      "image/png" = ["org.gnome.Loupe.desktop"];
+      "image/jpeg" = ["org.gnome.Loupe.desktop"];
+    };
+  };
   # Force mimeapps.list to be rewritten; useful when other programs change it.
   xdg.configFile."mimeapps.list".force = true;
 
