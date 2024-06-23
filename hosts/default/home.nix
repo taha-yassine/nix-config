@@ -96,7 +96,8 @@
     libreoffice-fresh
     dnsutils
     slack
-  ]);
+    trayscale
+    ]);
 
   # Enable home-manager and git
   programs.home-manager.enable = true;

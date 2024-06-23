@@ -142,6 +142,12 @@
   # Networking configuration
   networking.networkmanager.enable = true;
 
+  # Setup Tailscale
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "client";
+  };
+
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
