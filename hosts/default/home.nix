@@ -126,6 +126,24 @@
         { name = "dracula/zsh"; tags = ["as:theme"]; }
       ];
     };
+
+    initExtra = ''
+
+        # Define autocomplete for devshell init
+        # Credits: https://github.com/SoraTenshi/nixos-config/blob/a2db14ba3480f1ea265e152d0829c8c70783861e/home/shells/zsh/default.nix
+        devshell() {
+          nix flake init --template github:the-nix-way/dev-templates#$1 && ${pkgs.direnv}/bin/direnv allow
+        }
+
+        _devshell() {
+          compadd clojure csharp cue dhall elixir elm gleam go \
+             hashi haskell java kotlin latex nickel nim nix node ocaml \
+             opa php protobuf purescript python ruby rust-toolchain rust scala shell zig
+        }
+        compdef _devshell devshell
+        # End definition of devshell
+      '';
+
   };
 
   # Default apps
