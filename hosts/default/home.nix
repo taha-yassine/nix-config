@@ -119,6 +119,12 @@
     shellAliases = {
       ll = "ls -l";
       update = "sudo nixos-rebuild switch";
+      
+      # Command to work with flakes without worrying about git; source: https://mtlynch.io/notes/use-nix-flake-without-git/ 
+      git-ignoreflake = ''
+        git add --intent-to-add -f flake.nix flake.lock &&
+        git update-index --assume-unchanged flake.nix flake.lock
+      '';
     };
     zplug = {
       enable = true;
