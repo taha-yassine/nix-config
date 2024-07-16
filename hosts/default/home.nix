@@ -201,7 +201,7 @@
   programs.pandoc.enable = true;
 
   # Default apps
-   xdg.mimeApps = {
+  xdg.mimeApps = {
     enable = true;
     defaultApplications = {
       "application/pdf" = ["org.gnome.Evince.desktop"];
