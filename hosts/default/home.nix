@@ -152,6 +152,42 @@
 
   };
 
+  programs.zellij.enable = true;
+
+  programs.neovim.enable = true;
+  
+  programs.lazygit.enable = true;
+
+  programs.fzf.enable = true;
+
+  programs.bat.enable = true;
+
+  programs.yazi = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.atuin.enable = true;
+
+  programs.direnv.enable = true;
+
+  # Terminal
+  programs.kitty = {
+    enable = true;
+    # theme = "Dracula";
+    # theme = "Molokai";
+    # theme = "Japanesque";
+    # theme = "Shaman";
+    theme = "Spacedust";
+    # theme = "Thayer Bright";
+    # theme = "Treehouse";
+    settings = {
+      wayland_titlebar_color="system";
+    };
+  };
+
+  programs.pandoc.enable = true;
+
   # Default apps
    xdg.mimeApps = {
     enable = true;
