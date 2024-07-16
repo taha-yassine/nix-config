@@ -152,6 +152,18 @@
 
   };
 
+  # Starship
+  programs.starship = {
+    enable = true;
+    settings = {
+      add_newline = false;
+      format = "$all";
+      line_break.disabled = true;
+      command_timeout = 2000;
+      # nix_shell.heuristic = true;
+    };
+  };
+
   programs.zellij.enable = true;
 
   programs.neovim.enable = true;
