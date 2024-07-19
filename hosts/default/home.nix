@@ -97,6 +97,12 @@
     dnsutils
     slack
     trayscale
+    
+    # Gnome
+    gnomeExtensions.keep-awake
+    gnomeExtensions.blur-my-shell
+    flat-remix-gnome
+
     ]);
 
   # Enable home-manager and git
@@ -212,6 +218,16 @@
   # Force mimeapps.list to be rewritten; useful when other programs change it.
   xdg.configFile."mimeapps.list".force = true;
 
+
+  # dconf
+  dconf.settings = {
+    "org/gnome/shell" = {
+      enabled-extensions = [
+        "KeepAwake@jepfa.de" 
+        "blur-my-shell@aunetx"
+      ];
+    };
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
