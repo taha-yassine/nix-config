@@ -103,7 +103,9 @@
     gnomeExtensions.blur-my-shell
     flat-remix-gnome
 
-    ]);
+  ]) ++ [
+    outputs.packages.x86_64-linux.cursor
+  ];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
