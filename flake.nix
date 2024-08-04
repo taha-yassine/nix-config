@@ -19,8 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Hyprland
-    hyprland.url = "github:hyprwm/Hyprland";
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
