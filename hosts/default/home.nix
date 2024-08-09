@@ -96,6 +96,10 @@
     libreoffice-fresh
     dnsutils
     slack
+    neofetch
+    steam
+    heroic
+    ffmpeg
     trayscale
     
     # Gnome
