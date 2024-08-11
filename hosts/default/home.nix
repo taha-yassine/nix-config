@@ -233,6 +233,10 @@
         "blur-my-shell@aunetx"
       ];
     };
+
+    "org/gnome/desktop/interface" = {
+      enable-hot-corners = false;
+    };
   };
 
   # Nicely reload system units when changing configs
