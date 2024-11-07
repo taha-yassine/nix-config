@@ -193,7 +193,11 @@
 
   programs.atuin.enable = true;
 
-  programs.direnv.enable = true;
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true; # Better as it prevents gc of the environment
+  };
 
   # Terminal
   programs.kitty = {
