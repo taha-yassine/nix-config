@@ -123,6 +123,13 @@
   # btop
   programs.btop = {
     enable = true;
+    
+    # GPU support
+    # https://github.com/aristocratos/btop/issues/426#issuecomment-2103598718
+    package = unstable.btop.override {
+      cudaSupport = true;
+      rocmSupport = true;
+    };
 	};
 
   # ZSH
