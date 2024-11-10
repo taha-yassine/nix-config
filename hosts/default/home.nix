@@ -136,10 +136,6 @@
   # ZSH
   programs.zsh = {
     enable = true;
-    sessionVariables = {
-      EDITOR = "nvim";
-      VISUAL = "nvim";
-    };
     shellAliases = {
       ll = "ls -l";
       update = "sudo nixos-rebuild switch";
@@ -191,7 +187,10 @@
 
   programs.zellij.enable = true;
 
-  programs.neovim.enable = true;
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+  };
   
   programs.lazygit.enable = true;
 
