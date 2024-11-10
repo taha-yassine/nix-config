@@ -101,6 +101,7 @@
     heroic
     ffmpeg
     trayscale
+    aichat
     
     # Gnome
     gnomeExtensions.keep-awake
@@ -222,6 +223,9 @@
     # theme = "Treehouse";
     settings = {
       wayland_titlebar_color="system";
+    };
+    keybindings = {
+      "ctrl+k" = "send_text all aichat -e\\x20"; # emulates cursor's ctrl+k
     };
   };
 
