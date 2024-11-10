@@ -174,6 +174,7 @@
         # End definition of devshell
       '';
 
+    enableCompletion = false; # Temp fix for slow zsh startup; until https://github.com/nix-community/home-manager/pull/6063 is merged
   };
 
   # Starship
