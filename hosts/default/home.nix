@@ -102,6 +102,7 @@
     ffmpeg
     trayscale
     aichat
+    wl-clipboard
     
     # Gnome
     gnomeExtensions.keep-awake
@@ -190,6 +191,9 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    extraConfig = ''
+      set clipboard+=unnamedplus
+    '';
   };
   
   programs.lazygit.enable = true;
