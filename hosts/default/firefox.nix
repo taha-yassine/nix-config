@@ -78,6 +78,79 @@
         })
 
       ];
+      
+      search = {
+        default = "Google";
+
+        force = true;
+
+        engines =
+          let 
+            snowflake_icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            github_icon = "${pkgs.fetchurl {
+              url = "https://github.githubassets.com/favicons/favicon.svg";
+              sha256 = "sha256-apV3zU9/prdb3hAlr4W5ROndE4g3O1XMum6fgKwurmA=";
+            }}";
+          in {
+            "Nix Packages" = {
+              urls = [{
+                template = "https://search.nixos.org/packages";
+                params = [
+                  { name = "channel"; value = "unstable"; }
+                  { name = "query"; value = "{searchTerms}"; }
+                ];
+              }];
+              icon = snowflake_icon;
+              definedAliases = [ "@np" ];
+            };
+
+            "NixOS Options" = {
+              urls = [{
+                template = "https://search.nixos.org/options";
+                params = [
+                  { name = "channel"; value = "unstable"; }
+                  { name = "query"; value = "{searchTerms}"; }
+                ];
+              }];
+              icon = snowflake_icon;
+              definedAliases = [ "@no" ];
+            };
+
+            "Nixpkgs Issues" = {
+              urls = [{
+                template = "https://github.com/NixOS/nixpkgs/issues";
+                params = [
+                  { name = "q"; value = "{searchTerms}"; }
+                ];
+              }];
+              icon = snowflake_icon;
+              definedAliases = [ "@ni" ];
+            };
+            
+            "Home Manager Option Search" = {
+              urls = [{
+                template = "https://home-manager-options.extranix.com";
+                params = [
+                  { name = "release"; value = "master"; }
+                  { name = "query"; value = "{searchTerms}"; }
+                ];
+              }];
+              icon = snowflake_icon;
+              definedAliases = [ "@hm" ];
+            };
+
+            "GitHub" = {
+              urls = [{
+                template = "https://github.com/search";
+                params = [
+                  { name = "q"; value = "{searchTerms}"; }
+                ];
+              }];
+              icon = github_icon;
+              definedAliases = [ "@gh" ];
+            };
+          };
+      };
     };
   };
 }
