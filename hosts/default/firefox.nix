@@ -77,8 +77,29 @@
           meta = {};
         })
 
+        (let inherit (inputs.firefox-addons.lib.${pkgs.system}) buildFirefoxXpiAddon;
+        in
+          buildFirefoxXpiAddon {
+          pname = "obsidian-clipper";
+          version = "0.9.5";
+          addonId = "clipper@obsidian.md";
+          url = "https://addons.mozilla.org/firefox/downloads/file/4386495/web_clipper_obsidian-0.9.5.xpi";
+          sha256 = "sha256-7v8BkoT2Ex3t1dUlpKQLPkK2QDVdH/6VBKMwjIfbZGg=";
+          meta = {};
+        })
+
+        (let inherit (inputs.firefox-addons.lib.${pkgs.system}) buildFirefoxXpiAddon;
+        in
+          buildFirefoxXpiAddon {
+          pname = "dictionary-anyvhere";
+          version = "1.1.0";
+          addonId = "{e90f5de4-8510-4515-9f67-3b6654e1e8c2}";
+          url = "https://addons.mozilla.org/firefox/downloads/file/3697426/dictionary_anyvhere-1.1.0.xpi";
+          sha256 = "sha256-HPjxu7nw0aNue6WT61qaZm9sk45t7IsjNLSpr8eXQj0=";
+          meta = {};
+        })
       ];
-      
+
       search = {
         default = "Google";
 
