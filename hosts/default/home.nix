@@ -238,6 +238,17 @@
 
   programs.pandoc.enable = true;
 
+  # VLC config
+  xdg.configFile."vlc/vlcrc".text = lib.generators.toINI { } {
+    # Stops VLC from asking for network metadata access
+    qt.qt-privacy-ask = 0;
+    core.metadata-network-access = 0;
+
+    # Mirror Youtube keybindings
+    core.global-key-rate-faster-fine = "Shift+.";
+    core.global-key-rate-slower-fine = "Shift+,";
+  };
+
   # Default apps
   xdg.mimeApps = {
     enable = true;
