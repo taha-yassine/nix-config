@@ -54,6 +54,7 @@
         "browser.download.useDownloadDir" = false;
         "browser.toolbars.bookmarks.visibility" = "always";
         "browser.startup.page" = 3; # Resume the previous session at startup
+        "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "signon.rememberSignons" = false; # Disable built-in password manager
         "media.videocontrols.picture-in-picture.video-toggle.enabled" = false;
         "media.ffmpeg.vaapi.enabled" = true;
