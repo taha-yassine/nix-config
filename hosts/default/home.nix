@@ -107,7 +107,10 @@
     # Gnome
     gnomeExtensions.keep-awake
     gnomeExtensions.blur-my-shell
-    flat-remix-gnome
+    gnomeExtensions.power-profile-indicator-2
+    gnomeExtensions.media-controls
+    gnomeExtensions.battery-health-charging
+    gnomeExtensions.bluetooth-battery-meter
 
   ]) ++ [
     outputs.packages.x86_64-linux.cursor
@@ -254,6 +257,10 @@
       enabled-extensions = [
         "KeepAwake@jepfa.de" 
         "blur-my-shell@aunetx"
+        "power-profile@fthx"
+        "mediacontrols@cliffniff.github.com"
+        "Battery-Health-Charging@maniacx.github.com"
+        "Bluetooth-Battery-Meter@maniacx.github.com"
       ];
     };
 
