@@ -123,7 +123,6 @@
     userName = "Taha YASSINE";
     enable = true;
   };
-  programs.git-credential-oauth.enable = true;
 
   # btop
   programs.btop = {
