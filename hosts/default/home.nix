@@ -116,13 +116,7 @@
     outputs.packages.x86_64-linux.cursor
   ];
 
-  # Enable home-manager and git
   programs.home-manager.enable = true;
-  programs.git = {
-    userEmail = "yassinetaha1997@gmail.com";
-    userName = "Taha YASSINE";
-    enable = true;
-  };
 
   # btop
   programs.btop = {
