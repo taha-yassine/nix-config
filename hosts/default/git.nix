@@ -4,4 +4,8 @@
     userName = "Taha YASSINE";
     enable = true;
   };
+
+  programs.lazygit = {
+    enable = true;
+  };
 }
