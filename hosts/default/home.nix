@@ -136,6 +136,8 @@
     shellAliases = {
       ll = "ls -l";
       update = "sudo nixos-rebuild switch";
+
+      lg = "lazygit";
       
       # Command to work with flakes without worrying about git; source: https://mtlynch.io/notes/use-nix-flake-without-git/ 
       git-ignoreflake = ''
