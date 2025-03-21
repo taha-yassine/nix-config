@@ -60,7 +60,7 @@
         "media.ffmpeg.vaapi.enabled" = true;
         "media.hardwaremediakeys.enabled" = false;
       };
-      extensions = with inputs.firefox-addons.packages.${pkgs.system}; [ # See https://github.com/nix-community/nur-combined/tree/master/repos/rycee
+      extensions = with inputs.firefox-addons.packages.${pkgs.system}; [ # See https://github.com/nix-community/nur-combined/tree/main/repos/rycee
         ublock-origin
         bitwarden
         i-dont-care-about-cookies
@@ -92,11 +92,11 @@
         (let inherit (inputs.firefox-addons.lib.${pkgs.system}) buildFirefoxXpiAddon;
         in
           buildFirefoxXpiAddon {
-          pname = "dictionary-anyvhere";
-          version = "1.1.0";
-          addonId = "{e90f5de4-8510-4515-9f67-3b6654e1e8c2}";
-          url = "https://addons.mozilla.org/firefox/downloads/file/3697426/dictionary_anyvhere-1.1.0.xpi";
-          sha256 = "sha256-HPjxu7nw0aNue6WT61qaZm9sk45t7IsjNLSpr8eXQj0=";
+          pname = "definer";
+          version = "1.7.2";
+          addonId = "definer@lumetrium.com";
+          url = "https://addons.mozilla.org/firefox/downloads/file/4458575/lumetrium_definer-1.7.2.xpi";
+          sha256 = "sha256-8qqt2/yXW8X8xWrIRgljyXq3PA/NIs51Pj6Yzo2raUs=";
           meta = {};
         })
       ];
