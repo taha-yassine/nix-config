@@ -94,22 +94,24 @@
     enable = true; # Enable the X11 windowing system.
 
 
-  # Enable the GNOME Desktop Environment.
+    # Enable the GNOME Desktop Environment.
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
 
+    # Configure keymap in X11
+    xkb= {
+      layout = "fr";
+      variant = "";
+    };
 
-  # Configure keymap in X11
-    layout = "fr";
-    xkbVariant = "";
-
-    # Enable automatic login for the user.
-    displayManager.autoLogin.enable = true;
-    displayManager.autoLogin.user = "tyassine";
 
     # Enable touchpad support (enabled default in most desktopManager).
     # libinput.enable = true;
   };
+
+  # Enable automatic login for the user.
+  services.displayManager.autoLogin = { user = "tyassine"; enable = true; };
+  
   environment.sessionVariables.NIXOS_OZONE_WL = "1"; # For native Wayland support in electron based apps; see https://nixos.wiki/wiki/Visual_Studio_Code
 
   # Configure console keymap
