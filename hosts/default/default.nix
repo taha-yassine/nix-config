@@ -159,6 +159,14 @@
   programs = {
     zsh.enable = true; # needs to be enabled system-wide, even if it's already enabled in Home Manager
     hyprland.enable = true;
+
+  services.open-webui = {
+    enable = true;
+    package = pkgs-unstable.open-webui;
+    port = 7777;
+    environment = {
+      WEBUI_AUTH = "False";
+    };
   };
 
   fonts.packages = with pkgs; [
