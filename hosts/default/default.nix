@@ -147,6 +147,9 @@
   services.tailscale = {
     enable = true;
     useRoutingFeatures = "client";
+    extraSetFlags = [
+      "--operator=tyassine"
+    ];
   };
 
   # Bootloader
