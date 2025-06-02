@@ -95,7 +95,7 @@
     jabref
     (inkscape-with-extensions.override {inkscapeExtensions = [ inkscape-extensions.textext ];})
     olive-editor
-    vesktop
+    discord
     spotify
     emote
     libsForQt5.okular 
