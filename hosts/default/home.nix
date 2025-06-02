@@ -219,6 +219,10 @@
 
   programs.pandoc.enable = true;
 
+  programs.nh = {
+    enable = true;
+  };
+
   # VLC config
   xdg.configFile."vlc/vlcrc".text = lib.generators.toINI { } {
     # Stops VLC from asking for network metadata access
