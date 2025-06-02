@@ -219,6 +219,8 @@
 
   programs.pandoc.enable = true;
 
+  programs.ripgrep.enable = true;
+
   programs.nh = {
     enable = true;
   };
