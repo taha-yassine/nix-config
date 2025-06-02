@@ -113,6 +113,10 @@
               url = "https://github.githubassets.com/favicons/favicon.svg";
               sha256 = "sha256-apV3zU9/prdb3hAlr4W5ROndE4g3O1XMum6fgKwurmA=";
             }}";
+            youtube_icon = "${pkgs.fetchurl {
+              url = "https://www.youtube.com/favicon.ico";
+              sha256 = "sha256-i7HQ+kOhdDbVndVG9vdMdtxEc13vdSLCLYAxFm24kR0=";
+            }}";
           in {
             "Nix Packages" = {
               urls = [{
@@ -181,6 +185,17 @@
               }];
               icon = github_icon;
               definedAliases = [ "@gh" ];
+            };
+
+            "youtube" = {
+              urls = [{
+                template = "https://www.youtube.com/results";
+                params = [
+                  { name = "search_query"; value = "{searchTerms}"; }
+                ];
+              }];
+              icon = youtube_icon;
+              definedAliases = [ "@yt" ];
             };
           };
       };
