@@ -232,6 +232,17 @@
     };
   };
 
+  programs.eza = {
+    enable = true;
+    git = true;
+    icons = "auto";
+    extraOptions = [
+      "--group-directories-first"
+      "--header"
+      "--octal-permissions"
+      "--hyperlink"
+    ];
+  };
 
   programs.zed-editor = {
     enable = true;
