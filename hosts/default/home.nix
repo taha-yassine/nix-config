@@ -119,7 +119,7 @@
     gnomeExtensions.bluetooth-battery-meter
 
   ]) ++ [
-    outputs.packages.x86_64-linux.cursor
+    outputs.packages.x86_64-linux.power-toggle
   ];
 
   programs.home-manager.enable = true;

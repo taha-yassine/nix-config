@@ -72,6 +72,7 @@ in
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
       ];
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
@@ -88,6 +89,17 @@ in
       name = "Spotify";
       command = "spotify";
       binding = "<Super>m";
+    };
+
+    # Issue: The Framework key (keycode 226) was launching media player in GNOME.
+    # Cause: GNOME's 'media-static' GSettings binding (org.gnome.settings-daemon.plugins.media-keys media-static) was hardcoded to ['XF86AudioMedia'], even though 'showkey' confirmed keycode 226 was seen by the kernel. This override prevented custom keybindings.
+    # Fix: Cleare the 'media-static' binding in dconf-editor before adding a custom binding.
+    # Related report: https://gitlab.gnome.org/GNOME/gnome-settings-daemon/-/issues/466
+    "org/gnome/settings-daemon/plugins/media-keys".media-static = [""];
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
+      name = "Power Toggle";
+      command = "power-toggle";
+      binding = "AudioMedia";
     };
 
     # Settings

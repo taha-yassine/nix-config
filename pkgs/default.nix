@@ -2,5 +2,5 @@
 # You can build them using 'nix build .#example'
 pkgs:
 {
-  cursor = pkgs.callPackage ./cursor.nix { };
+  power-toggle = pkgs.callPackage ./power-toggle.nix { };
 }
