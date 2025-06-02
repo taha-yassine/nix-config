@@ -39,6 +39,7 @@
     ./git.nix
     ./gnome.nix
     ./gimp.nix
+    ./nvim.nix
   ];
 
   nixpkgs = {
@@ -193,13 +194,6 @@
 
   programs.zellij.enable = true;
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    extraConfig = ''
-      set clipboard+=unnamedplus
-    '';
-  };
   
   programs.lazygit.enable = true;
 
