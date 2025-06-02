@@ -217,18 +217,15 @@
   # Terminal
   programs.kitty = {
     enable = true;
-    # theme = "Dracula";
-    # theme = "Molokai";
-    # theme = "Japanesque";
-    # theme = "Shaman";
-    theme = "Spacedust";
-    # theme = "Thayer Bright";
-    # theme = "Treehouse";
+    # themeFile = "Dracula";
+    themeFile = "Molokai";
+    # themeFile = "Japanesque";
+    # themeFile = "Shaman";
+    # themeFile = "Spacedust";
+    # themeFile = "Thayer Bright";
+    # themeFile = "Treehouse";
     settings = {
       wayland_titlebar_color="system";
-    };
-    keybindings = {
-      "ctrl+k" = "send_text all aichat -e\\x20"; # emulates cursor's ctrl+k
     };
   };
 
