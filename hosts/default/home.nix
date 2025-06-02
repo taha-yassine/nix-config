@@ -37,6 +37,7 @@
     ./vscode.nix
     ./firefox.nix
     ./git.nix
+    ./gnome.nix
   ];
 
   nixpkgs = {
@@ -260,25 +261,6 @@
   };
   # Force mimeapps.list to be rewritten; useful when other programs change it.
   xdg.configFile."mimeapps.list".force = true;
-
-
-  # dconf
-  dconf.settings = {
-    "org/gnome/shell" = {
-      enabled-extensions = [
-        "KeepAwake@jepfa.de" 
-        "blur-my-shell@aunetx"
-        "power-profile@fthx"
-        "mediacontrols@cliffniff.github.com"
-        "Battery-Health-Charging@maniacx.github.com"
-        "Bluetooth-Battery-Meter@maniacx.github.com"
-      ];
-    };
-
-    "org/gnome/desktop/interface" = {
-      enable-hot-corners = false;
-    };
-  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

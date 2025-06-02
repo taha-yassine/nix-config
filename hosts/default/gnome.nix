@@ -11,6 +11,7 @@ let
     power-profile-indicator-2
     just-perfection
     vitals
+    wsp-windows-search-provider
   ];
 in
 {
