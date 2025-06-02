@@ -229,6 +229,16 @@
     };
   };
 
+  programs.ghostty = {
+    enable = true;
+    settings = {
+      theme = "Monokai Remastered";
+      keybind = [
+        "ctrl+shift+w=close_surface"
+      ];
+    };
+  };
+
   programs.eza = {
     enable = true;
     git = true;
