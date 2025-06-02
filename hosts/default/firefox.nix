@@ -148,6 +148,17 @@
               icon = snowflake_icon;
               definedAliases = [ "@ni" ];
             };
+
+            "Nixpkgs PR Tracker" = {
+              urls = [{
+                template = "https://nixpkgs-tracker.ocfox.me";
+                params = [
+                  { name = "pr"; value = "{searchTerms}"; }
+                ];
+              }];
+              icon = snowflake_icon;
+              definedAliases = [ "@npr" ];
+            };
             
             "Home Manager Option Search" = {
               urls = [{
