@@ -6,14 +6,22 @@
   lib,
   config,
   pkgs,
-  unstable,
+  pkgs-unstable,
+  pkgs-staging,
   ...
 }: {
 
-  # Binds nixpkgs-unstable to unstable
-  _module.args.unstable = import inputs.nixpkgs-unstable {
-    inherit (pkgs) system;
-    config.allowUnfree = true;
+  # Binds nixpkgs-unstable to pkgs-unstable
+  # and nixpkgs-staging to pkgs-staging
+  _module.args = {
+    pkgs-unstable = import inputs.nixpkgs-unstable {
+      inherit (pkgs) system;
+      config.allowUnfree = true;
+    };
+    pkgs-staging = import inputs.nixpkgs-staging {
+      inherit (pkgs) system;
+      config.allowUnfree = true;
+    };
   };
 
   # You can import other home-manager modules here

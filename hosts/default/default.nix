@@ -6,8 +6,21 @@
   lib,
   config,
   pkgs,
+  pkgs-unstable,
   ...
 }: {
+
+  _module.args = {
+    pkgs-unstable = import inputs.nixpkgs-unstable {
+      inherit (pkgs) system;
+      config.allowUnfree = true;
+    };
+    pkgs-staging = import inputs.nixpkgs-staging {
+      inherit (pkgs) system;
+      config.allowUnfree = true;
+    };
+  };
+
   # You can import other NixOS modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
