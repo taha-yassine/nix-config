@@ -38,6 +38,7 @@
     ./firefox.nix
     ./git.nix
     ./gnome.nix
+    ./gimp.nix
   ];
 
   nixpkgs = {
