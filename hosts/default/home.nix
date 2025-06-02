@@ -38,6 +38,7 @@
     ./firefox.nix
     ./git.nix
     ./gnome.nix
+    ./shells.nix
     ./gimp.nix
     ./nvim.nix
   ];
@@ -68,9 +69,6 @@
   home = {
     username = "tyassine";
     homeDirectory = "/home/tyassine";
-    shellAliases = {
-      "la" = "ls -la";
-    };
   };
 
   # Applications
@@ -138,48 +136,6 @@
     };
 	};
 
-  # ZSH
-  programs.zsh = {
-    enable = true;
-    shellAliases = {
-      ll = "ls -l";
-      update = "sudo nixos-rebuild switch";
-
-      lg = "lazygit";
-      
-      # Command to work with flakes without worrying about git; source: https://mtlynch.io/notes/use-nix-flake-without-git/ 
-      git-ignoreflake = ''
-        git add --intent-to-add -f flake.nix flake.lock &&
-        git update-index --assume-unchanged flake.nix flake.lock
-      '';
-    };
-    zplug = {
-      enable = true;
-      plugins = [
-        { name = "dracula/zsh"; tags = ["as:theme"]; }
-      ];
-    };
-
-    initExtra = ''
-
-        # Define autocomplete for devshell init
-        # Credits: https://github.com/SoraTenshi/nixos-config/blob/a2db14ba3480f1ea265e152d0829c8c70783861e/home/shells/zsh/default.nix
-        devshell() {
-          nix flake init --template github:the-nix-way/dev-templates#$1 && ${pkgs.direnv}/bin/direnv allow
-        }
-
-        _devshell() {
-          compadd clojure csharp cue dhall elixir elm gleam go \
-             hashi haskell java kotlin latex nickel nim nix node ocaml \
-             opa php protobuf purescript python ruby rust-toolchain rust scala shell zig
-        }
-        compdef _devshell devshell
-        # End definition of devshell
-      '';
-
-    enableCompletion = false; # Temp fix for slow zsh startup; until https://github.com/nix-community/home-manager/pull/6063 is merged
-  };
-
   # Starship
   programs.starship = {
     enable = true;
@@ -203,14 +159,12 @@
 
   programs.yazi = {
     enable = true;
-    enableZshIntegration = true;
   };
 
   programs.atuin.enable = true;
 
   programs.direnv = {
     enable = true;
-    enableZshIntegration = true;
     nix-direnv.enable = true; # Better as it prevents gc of the environment
   };
 
@@ -231,6 +185,7 @@
 
   programs.ghostty = {
     enable = true;
+    enableFishIntegration = true;
     settings = {
       theme = "Monokai Remastered";
       keybind = [
