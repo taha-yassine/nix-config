@@ -36,6 +36,7 @@
     # ./hyprland.nix
     ./vscode.nix
     ./firefox.nix
+    ./git.nix
   ];
 
   nixpkgs = {
