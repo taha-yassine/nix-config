@@ -232,6 +232,18 @@
     };
   };
 
+
+  programs.zed-editor = {
+    enable = true;
+    userSettings = {
+      telemetry = {
+        metrics = false;
+      };
+      vim_mode = true;
+      theme = "Ayu Dark";
+    };
+  };
+
   programs.pandoc.enable = true;
 
   # VLC config
