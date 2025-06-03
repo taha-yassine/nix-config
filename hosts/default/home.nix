@@ -161,7 +161,13 @@
     enable = true;
   };
 
-  programs.atuin.enable = true;
+  programs.atuin = {
+    enable = true;
+    settings = {
+      filter_mode = "session";
+      enter_accept = true;
+    };
+  };
 
   programs.direnv = {
     enable = true;
