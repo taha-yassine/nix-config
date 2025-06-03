@@ -115,7 +115,7 @@
 
     # Configure keymap in X11
     xkb= {
-      layout = "fr";
+      layout = "us";
       variant = "";
     };
 
@@ -130,7 +130,7 @@
   environment.sessionVariables.NIXOS_OZONE_WL = "1"; # For native Wayland support in electron based apps; see https://nixos.wiki/wiki/Visual_Studio_Code
 
   # Configure console keymap
-  console.keyMap = "fr";
+  console.keyMap = "us";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
