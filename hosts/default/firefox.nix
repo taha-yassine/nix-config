@@ -1,6 +1,14 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, pkgs-unstable, ... }:
 
 {
+  # Enable PWA support
+  home.packages = [
+    pkgs-unstable.firefoxpwa
+  ];
+  programs.firefox.nativeMessagingHosts = [
+    pkgs-unstable.firefoxpwa
+  ];
+
   programs.firefox = {
     enable = true;
     profiles.default = {
@@ -66,6 +74,7 @@
         i-dont-care-about-cookies
         jabref
         user-agent-string-switcher
+          pwas-for-firefox
 
         (let inherit (inputs.firefox-addons.lib.${pkgs.system}) buildFirefoxXpiAddon;
         in
