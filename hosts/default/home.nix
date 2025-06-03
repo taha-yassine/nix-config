@@ -148,8 +148,11 @@
     };
   };
 
-  programs.zellij.enable = true;
-
+  programs.zellij = {
+    settings = {
+      theme = "molokai-dark";
+    };
+  };  
   
   programs.lazygit.enable = true;
 
