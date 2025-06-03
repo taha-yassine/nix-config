@@ -23,10 +23,16 @@
       # vscodevim.vim
       ms-vscode.cpptools
       astro-build.astro-vscode
-
+        unifiedjs.vscode-mdx
+        firefox-devtools.vscode-firefox-debug
+        ms-toolsai.jupyter-renderers
+        yzhang.markdown-all-in-one
+        tamasfe.even-better-toml
+        charliermarsh.ruff
+        samuelcolvin.jinjahtml
     ] ++ (with inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace; [
-      sourcegraph.cody-ai
       streetsidesoftware.code-spell-checker-french
+        tyriar.lorem-ipsum
     ]);
     userSettings = {
       "editor.wordWrap" = "on";
@@ -41,11 +47,19 @@
       "extensions.ignoreRecommendations" = false;
       "window.titleBarStyle" = "custom";
       "workbench.activityBar.location" = "top";
+        "editor.fontFamily" = "Hack Nerd Font";
+        "terminal.integrated.fontFamily" = "Hack Nerd Font";
+        "nix.formatterPath" = "nixfmt";
+        "editor.find.cursorMoveOnType" = false;
+        "python.analysis.typeCheckingMode" = "basic";
+        "update.mode" = "manual"; # Disable updates notifications
     };
     keybindings = [
       { key = "ctrl+alt+f"; command = "workbench.action.toggleMaximizeEditorGroup"; }
       { key = "ctrl+alt+="; command = "workbench.action.increaseViewSize"; }
       { key = "ctrl+alt+-"; command = "workbench.action.decreaseViewSize"; }
+        { key = "alt+left"; command = "workbench.action.navigateBack"; when = "canNavigateBack"; }
+        { key = "alt+right"; command = "workbench.action.navigateForward"; when = "canNavigateForward"; }
     ];
   };
 }
