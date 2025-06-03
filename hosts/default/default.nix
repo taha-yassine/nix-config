@@ -52,11 +52,8 @@
       #   });
       # })
     ];
-    # Configure your nixpkgs instance
-    config = {
-      # Disable if you don't want unfree packages
-      allowUnfree = true;
-    };
+    
+    config.allowUnfree = true;
   };
 
   nix = {
@@ -108,9 +105,7 @@
     LC_TIME = "fr_FR.UTF-8";
   };
 
-  # Graphics
-  services.xserver = 
-  {
+  services.xserver = {
     enable = true; # Enable the X11 windowing system.
 
 
@@ -141,7 +136,6 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -177,7 +171,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   programs = {
-    hyprland.enable = true;
 
   services.open-webui = {
     enable = true;
@@ -189,7 +182,7 @@
   };
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "Hack" ]; })
+    nerd-fonts.hack
   ];
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.

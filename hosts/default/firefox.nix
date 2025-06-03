@@ -13,7 +13,9 @@
     enable = true;
     profiles.default = {
       id = 0;
-      bookmarks = [
+      bookmarks = {
+        force = true;
+        settings = [
         {
           name = "Toolbar";
           toolbar = true;
@@ -42,8 +44,8 @@
                   url = "https://github.com/nix-community/nur-combined/blob/master/repos/rycee/pkgs/firefox-addons/generated-firefox-addons.nix";
                 }
                 {
-                  name = "Nix PR Tracker";
-                  url = "https://nixpk.gs/pr-tracker.html";
+                    name = "Nixpkgs PR Tracker";
+                    url = "https://nixpkgs-tracker.ocfox.me";
                 }
                 {
                   name = "nixpkgs";
@@ -58,6 +60,7 @@
           ];
         }
       ];
+      };
       settings = {
         "browser.download.useDownloadDir" = false;
         "browser.toolbars.bookmarks.visibility" = "always";
@@ -68,12 +71,13 @@
         "media.ffmpeg.vaapi.enabled" = true;
         "media.hardwaremediakeys.enabled" = false;
       };
-      extensions = with inputs.firefox-addons.packages.${pkgs.system}; [ # See https://github.com/nix-community/nur-combined/tree/main/repos/rycee
-        ublock-origin
-        bitwarden
-        i-dont-care-about-cookies
-        jabref
-        user-agent-string-switcher
+      extensions = {
+        packages = with inputs.firefox-addons.packages.${pkgs.system}; [ # See https://github.com/nix-community/nur-combined/blob/main/repos/rycee/pkgs/firefox-addons/generated-firefox-addons.nix
+          ublock-origin
+          bitwarden
+          i-dont-care-about-cookies
+          jabref
+          user-agent-string-switcher
           pwas-for-firefox
 
         (let inherit (inputs.firefox-addons.lib.${pkgs.system}) buildFirefoxXpiAddon;
@@ -109,9 +113,10 @@
           meta = {};
         })
       ];
+      };
 
       search = {
-        default = "Google";
+        default = "google";
 
         force = true;
 
