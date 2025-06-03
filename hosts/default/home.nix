@@ -89,35 +89,73 @@
   };
 
   home.packages = (with pkgs; [ # Stable
-  ]) ++ (with unstable; [ # Unstable
-    zoom-us
-    python311
+  ]) ++ (with pkgs-unstable; [ # Unstable
+    (python313.withPackages(ps: with ps; [ 
+    ]))
     jabref
+    zoom-us
+    uv
+    teams-for-linux
     (inkscape-with-extensions.override {inkscapeExtensions = [ inkscape-extensions.textext ];})
     olive-editor
     discord
     spotify
-    emote
     libsForQt5.okular 
-    libreoffice-fresh
     dnsutils
     slack
+    gnumake
     neofetch
-    steam
-    heroic
+    libreoffice-fresh
+    distrobox
+    wget
+    ollama
+    cht-sh
+    unzip
+    qbittorrent
+    gamescope
     ffmpeg
-    trayscale
+    vulkan-tools
+    wineWowPackages.waylandFull
+    gdu
+    obsidian
+    nix-output-monitor
+    calibre
+    element-desktop # Matrix client
+    trayscale # Tailscale GUI
+    signal-desktop
+    google-chrome
+    nix-init
+    vlc
+    nixfmt-rfc-style
+    code-cursor
+    code2prompt
+    yt-dlp # Youtube downloader CLI
+    audacity
+    sqlitebrowser
     aichat
     wl-clipboard
-    
-    # Gnome
-    gnomeExtensions.keep-awake
-    gnomeExtensions.blur-my-shell
-    gnomeExtensions.power-profile-indicator-2
-    gnomeExtensions.media-controls
-    gnomeExtensions.battery-health-charging
-    gnomeExtensions.bluetooth-battery-meter
+    smile # Emoji picker
+    rquickshare
+    nixd # Nix LSP
+    gdu
+    devcontainer
+    heroic
+    nvtopPackages.full
+    nvitop
+    krita # Image editor (Gimp alternative)
+    glow # Markdown viewer
+    posting # TUI API client
+    jq
+    resources
+    windsurf
+    handbrake
+    beeper # Chat aggregator
 
+    # VM
+    virt-manager
+    virtio-win
+    virtiofsd
+  ]) ++ (with pkgs-staging; [
   ]) ++ [
     outputs.packages.x86_64-linux.power-toggle
   ];
@@ -130,7 +168,7 @@
     
     # GPU support
     # https://github.com/aristocratos/btop/issues/426#issuecomment-2103598718
-    package = unstable.btop.override {
+    package = pkgs-unstable.btop.override {
       cudaSupport = true;
       rocmSupport = true;
     };
