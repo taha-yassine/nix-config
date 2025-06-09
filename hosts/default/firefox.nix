@@ -215,4 +215,12 @@
       };
     };
   };
+
+  # Make Firefox the default browser
+  xdg.mimeApps.defaultApplications = { 
+    "text/html" = [ "firefox.desktop" ];
+    "x-scheme-handler/http" = [ "firefox.desktop" ];
+    "x-scheme-handler/https" = [ "firefox.desktop" ];
+    "application/xhtml+xml" = [ "firefox.desktop" ];
+  };
 }
