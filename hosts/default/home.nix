@@ -272,6 +272,12 @@
     enable = true;
   };
 
+  # Tailscale GUI
+  services.trayscale = {
+    enable = true;
+    hideWindow = true;
+  };
+
   # VLC config
   xdg.configFile."vlc/vlcrc".text = lib.generators.toINI { } {
     # Stops VLC from asking for network metadata access
