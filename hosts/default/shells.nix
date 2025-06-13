@@ -1,6 +1,8 @@
 {
   pkgs,
   unstable,
+  lib,
+  config,
   ...
 }: {
   home.shellAliases = {
@@ -23,6 +25,8 @@
       git add --intent-to-add -f flake.nix flake.lock &&
       git update-index --assume-unchanged flake.nix flake.lock
     '';
+
+    neofetch = lib.mkIf config.programs.fastfetch.enable "fastfetch";
   };
 
   programs.bash = {

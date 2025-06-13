@@ -104,7 +104,6 @@
     dnsutils
     slack
     gnumake
-    neofetch
     libreoffice-fresh
     distrobox
     wget
@@ -271,6 +270,8 @@
   programs.nh = {
     enable = true;
   };
+  
+  programs.fastfetch.enable = true;
 
   # Tailscale GUI
   services.trayscale = {
