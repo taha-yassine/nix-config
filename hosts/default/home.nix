@@ -157,6 +157,7 @@
   ]) ++ (with pkgs-staging; [
   ]) ++ [
     outputs.packages.x86_64-linux.power-toggle
+    outputs.packages.x86_64-linux.blink
   ];
 
   programs.home-manager.enable = true;

@@ -3,4 +3,5 @@
 pkgs:
 {
   power-toggle = pkgs.callPackage ./power-toggle.nix { };
+  blink = pkgs.callPackage ./blink.nix { };
 }
