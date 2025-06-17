@@ -12,6 +12,7 @@ let
     just-perfection
     vitals
     wsp-windows-search-provider
+    gsconnect
   ];
 in
 {

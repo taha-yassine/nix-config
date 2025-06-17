@@ -26,4 +26,14 @@
     enable = true;
     rawDeviceName = "alsa_output.pci-0000_c1_00.6.analog-stereo";
   };
+
+  networking.firewall = {
+    enable = true;
+    allowedTCPPortRanges = [
+      { from = 1714; to = 1764; } # GSConnect
+    ];
+    allowedUDPPortRanges = [
+      { from = 1714; to = 1764; } # GSConnects
+    ];
+  };
 }
