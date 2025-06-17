@@ -107,5 +107,22 @@ in
     "org/gnome/desktop/interface".enable-hot-corners = false;
     "org/gnome/desktop/wm/preferences".auto-raise = true; # Focus new windows
     "org/gnome/desktop/session".lock-enabled = false; # Disable screen lock after it blanks
+
+    # Extension settings
+    # Use dconf-editor to explore the available settings for each extension
+    ## Just Perfection
+    "org/gnome/shell/extensions/just-perfection".panel-button-padding-size = 2; # Value shown in settings panel is 1 less
+    "org/gnome/shell/extensions/just-perfection".clock-menu-position = 0; # Center
+
+    ## Vitals
+    "org/gnome/shell/extensions/vitals".position-in-panel = 0; # Left
+    "org/gnome/shell/extensions/vitals".icon-style = 1; # Gnome Icons
+
+    ## Media Controls
+    "org/gnome/shell/extensions/mediacontrols".extension-position = "Left";
+    "org/gnome/shell/extensions/mediacontrols".extension-index = 5;
+
+    ## GSConnect
+    "org/gnome/shell/extensions/gsconnect".show-indicators = true;
   };
 }
