@@ -1,0 +1,42 @@
+From: Local patch <local@local>
+Date: Wed, 18 Mar 2026 00:00:00 +0000
+Subject: [PATCH] usb: typec: ucsi: make GET_CABLE_PROPERTY failure non-fatal
+
+Some firmware implementations (e.g. AMD Phoenix / Framework 13 AMD)
+return "unrecognized command" (error 0 or 256) for GET_CABLE_PROPERTY,
+even though the UCSI_CAP_CABLE_DETAILS feature bit is set. This causes
+ucsi_register_cable() to abort, which prevents the UCSI connection
+sequence from completing and the USB data path from being enabled on the
+port, leaving USB devices plugged directly into USB-C invisible to xHCI.
+
+Rather than propagating the error, fall back to registering a generic
+passive USB-C cable so the connection sequence can complete normally.
+
+Signed-off-by: Local patch <local@local>
+---
+ drivers/usb/typec/ucsi/ucsi.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/usb/typec/ucsi/ucsi.c b/drivers/usb/typec/ucsi/ucsi.c
+--- a/drivers/usb/typec/ucsi/ucsi.c
++++ b/drivers/usb/typec/ucsi/ucsi.c
+@@ -937,8 +937,9 @@
+ 	command = UCSI_GET_CABLE_PROPERTY | UCSI_CONNECTOR_NUMBER(con->num);
+ 	ret = ucsi_send_command(con->ucsi, command, &cable_prop, sizeof(cable_prop));
+ 	if (ret < 0) {
+-		dev_err(con->ucsi->dev, "GET_CABLE_PROPERTY failed (%d)\n", ret);
+-		return ret;
++		dev_warn(con->ucsi->dev, "GET_CABLE_PROPERTY failed (%d), assuming passive USB-C cable\n", ret);
++		desc.type = USB_PLUG_TYPE_C;
++		goto register_cable;
+ 	}
+
+ 	switch (UCSI_CABLE_PROP_FLAG_PLUG_TYPE(cable_prop.flags)) {
+@@ -963,6 +964,7 @@
+ 	if (con->ucsi->version >= UCSI_VERSION_2_1)
+ 		desc.pd_revision = UCSI_CABLE_PROP_FLAG_PD_MAJOR_REV_AS_BCD(cable_prop.flags);
+
++register_cable:
+ 	cable = typec_register_cable(con->port, &desc);
+ 	if (IS_ERR(cable)) {
+ 		dev_err(con->ucsi->dev,
