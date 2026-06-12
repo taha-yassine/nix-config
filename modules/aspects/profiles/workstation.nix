@@ -18,6 +18,7 @@ in
 {
   den.aspects.framework.tyassine.includes = homeIncludes;
   den.aspects.matebook.tyassine.includes = homeIncludes;
+  den.aspects.nexus.tyassine.includes = homeIncludes;
 
   den.aspects.workstation = {
     includes = with den.aspects; [

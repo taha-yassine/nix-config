@@ -2,6 +2,7 @@
 {
   den.hosts.x86_64-linux.matebook.users.tyassine = { };
   den.hosts.x86_64-linux.framework.users.tyassine = { };
+  den.hosts.x86_64-linux.nexus.users.tyassine = { };
 
   # All users get home-manager.
   den.schema.user.classes = lib.mkDefault [ "homeManager" ];
