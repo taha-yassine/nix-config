@@ -15,6 +15,10 @@
     zed
   ];
 
+  den.aspects.macos-dev-profile.includes = with den.aspects; [
+    den.aspects."dev-profile"
+  ];
+
   den.aspects.linux-workstation-user.includes = with den.aspects; [
     den.aspects."dev-profile"
     custom-packages

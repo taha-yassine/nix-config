@@ -5,8 +5,6 @@
       pkgs-unstable,
       lib,
       config,
-      host,
-      user,
       ...
     }:
     {
@@ -29,7 +27,7 @@
 
         y = "yazi";
 
-        hm-rebuild = "nh home switch -c ${user.userName}@${host.name} $HOME/nix-config";
+        hm-rebuild = "home-manager switch --flake $HOME/nix-config";
         nfu = "nix flake update --flake $HOME/nix-config";
 
         lg = lib.mkIf config.programs.lazygit.enable "lazygit";

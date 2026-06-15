@@ -1,7 +1,7 @@
 {
   den.aspects.terminal.homeManager =
     {
-      host,
+      config,
       lib,
       pkgs,
       pkgs-unstable,
@@ -14,7 +14,8 @@
 
       home.shellAliases = {
         update = "sudo nixos-rebuild switch";
-        rebuild = "nh os switch $HOME/nix-config -H ${host.name}";
+        rebuild = "nh os switch $HOME/nix-config -H $(hostname)";
+        hm-rebuild = "nh home switch -c ${config.home.username}@$(hostname) $HOME/nix-config";
       };
 
       programs.btop.package = pkgs-unstable.btop.override {
