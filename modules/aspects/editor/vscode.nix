@@ -86,13 +86,36 @@
             "cursor.composer.usageSummaryDisplay" = "always";
           };
           keybindings = [
-            { key = "ctrl+alt+f"; command = "workbench.action.toggleMaximizeEditorGroup"; }
-            { key = "ctrl+alt+="; command = "workbench.action.increaseViewSize"; }
-            { key = "ctrl+alt+-"; command = "workbench.action.decreaseViewSize"; }
-            { key = "alt+left"; command = "workbench.action.navigateBack"; when = "canNavigateBack"; }
-            { key = "alt+right"; command = "workbench.action.navigateForward"; when = "canNavigateForward"; }
-            { key = "ctrl+tab"; command = "workbench.action.nextEditor"; }
-            { key = "ctrl+shift+tab"; command = "workbench.action.previousEditor"; }
+            {
+              key = "ctrl+alt+f";
+              command = "workbench.action.toggleMaximizeEditorGroup";
+            }
+            {
+              key = "ctrl+alt+=";
+              command = "workbench.action.increaseViewSize";
+            }
+            {
+              key = "ctrl+alt+-";
+              command = "workbench.action.decreaseViewSize";
+            }
+            {
+              key = "alt+left";
+              command = "workbench.action.navigateBack";
+              when = "canNavigateBack";
+            }
+            {
+              key = "alt+right";
+              command = "workbench.action.navigateForward";
+              when = "canNavigateForward";
+            }
+            {
+              key = "ctrl+tab";
+              command = "workbench.action.nextEditor";
+            }
+            {
+              key = "ctrl+shift+tab";
+              command = "workbench.action.previousEditor";
+            }
           ];
         };
       };

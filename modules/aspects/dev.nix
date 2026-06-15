@@ -5,14 +5,9 @@
       home.packages = with pkgs-unstable; [
         uv
         gnumake
-        nixfmt
         code2prompt
         sqlitebrowser
-        nixd
-        devcontainer
         posting
-        jq
-        comma
         claude-code
         cabextract
       ];
@@ -24,21 +19,6 @@
       };
 
       programs.codex.enable = true;
-
-      programs.zed-editor = {
-        enable = true;
-        userSettings = {
-          telemetry.metrics = false;
-          vim_mode = true;
-          theme = "Ayu Dark";
-        };
-      };
-
       programs.pandoc.enable = true;
-
-      # TODO: move GitHub token to secrets.
-      programs.nix-init = {
-        enable = true;
-      };
     };
 }

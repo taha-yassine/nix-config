@@ -1,24 +1,32 @@
 { den, ... }:
-let
-  homeIncludes = with den.aspects; [
-    custom-packages
-    cli-tools
-    dev-tools
-    desktop-apps
-    terminals
-    vscode
-    firefox
+{
+  den.aspects.base-profile.includes = with den.aspects; [
+    terminal
     git
-    gnome
-    shells
+    den.aspects."nix-tools"
     nvim
+  ];
+
+  den.aspects.dev-profile.includes = with den.aspects; [
+    den.aspects."base-profile"
+    containers
+    den.aspects."dev-tools"
+    vscode
+    zed
+  ];
+
+  den.aspects.linux-workstation-user.includes = with den.aspects; [
+    den.aspects."dev-profile"
+    custom-packages
+    den.aspects."desktop-apps"
+    firefox
+    gnome
     gimp
   ];
-in
-{
-  den.aspects.framework.tyassine.includes = homeIncludes;
-  den.aspects.matebook.tyassine.includes = homeIncludes;
-  den.aspects.nexus.tyassine.includes = homeIncludes;
+
+  den.aspects.framework.tyassine.includes = [ den.aspects.linux-workstation-user ];
+  den.aspects.matebook.tyassine.includes = [ den.aspects.linux-workstation-user ];
+  den.aspects.nexus.tyassine.includes = [ den.aspects.linux-workstation-user ];
 
   den.aspects.workstation = {
     includes = with den.aspects; [

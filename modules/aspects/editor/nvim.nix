@@ -10,6 +10,7 @@
           tokyonight-nvim
           comment-nvim
           nightfox-nvim
+          vim-fetch
         ];
 
         extraConfig = ''

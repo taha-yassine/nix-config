@@ -1,9 +1,12 @@
 { den, ... }:
 {
   den.aspects.tyassine = {
-    homeManager = {
-      home.username = "tyassine";
-      home.homeDirectory = "/home/tyassine";
-    };
+    homeManager =
+      { pkgs, ... }:
+      {
+        home.username = "tyassine";
+        home.homeDirectory =
+          if pkgs.stdenv.hostPlatform.isDarwin then "/Users/tyassine" else "/home/tyassine";
+      };
   };
 }

@@ -1,27 +1,39 @@
 { den, inputs, ... }:
 let
-  mkUnstable = system: import inputs.nixpkgs-unstable {
-    inherit system;
-    config = {
-      allowUnfree = true;
-      # jellyfin-media-player still pulls qtwebengine 5.15.
-      permittedInsecurePackages = [ "qtwebengine-5.15.19" ];
+  mkUnstable =
+    system:
+    import inputs.nixpkgs-unstable {
+      inherit system;
+      config = {
+        allowUnfree = true;
+        # jellyfin-media-player still pulls qtwebengine 5.15.
+        permittedInsecurePackages = [ "qtwebengine-5.15.19" ];
+      };
     };
-  };
-  mkStaging = system: import inputs.nixpkgs-staging {
-    inherit system;
-    config.allowUnfree = true;
-  };
+  mkStaging =
+    system:
+    import inputs.nixpkgs-staging {
+      inherit system;
+      config.allowUnfree = true;
+    };
 in
 {
   den.default = {
-    nixos.system.stateVersion = "23.05";
-    homeManager.home.stateVersion = "23.05";
+    nixos =
+      { pkgs, ... }:
+      {
+        system.stateVersion = "23.05";
+        _module.args.pkgs-unstable = mkUnstable pkgs.system;
+        _module.args.pkgs-staging = mkStaging pkgs.system;
+      };
 
-    nixos._module.args.pkgs-unstable = mkUnstable "x86_64-linux";
-    nixos._module.args.pkgs-staging = mkStaging "x86_64-linux";
-    homeManager._module.args.pkgs-unstable = mkUnstable "x86_64-linux";
-    homeManager._module.args.pkgs-staging = mkStaging "x86_64-linux";
+    homeManager =
+      { pkgs, ... }:
+      {
+        home.stateVersion = "23.05";
+        _module.args.pkgs-unstable = mkUnstable pkgs.system;
+        _module.args.pkgs-staging = mkStaging pkgs.system;
+      };
   };
 
   den.default.includes = [

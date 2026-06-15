@@ -1,7 +1,27 @@
 {
-  den.aspects.terminals.homeManager =
-    { pkgs-unstable, ... }:
+  den.aspects.terminal.homeManager =
     {
+      host,
+      lib,
+      pkgs,
+      pkgs-unstable,
+      ...
+    }:
+    lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
+      home.packages = with pkgs-unstable; [
+        wl-clipboard
+      ];
+
+      home.shellAliases = {
+        update = "sudo nixos-rebuild switch";
+        rebuild = "nh os switch $HOME/nix-config -H ${host.name}";
+      };
+
+      programs.btop.package = pkgs-unstable.btop.override {
+        cudaSupport = true;
+        rocmSupport = true;
+      };
+
       programs.kitty = {
         enable = true;
         themeFile = "Molokai";
