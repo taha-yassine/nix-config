@@ -7,6 +7,23 @@
       config,
       ...
     }:
+    let
+      fishBin = "${pkgs.fish}/bin/fish";
+      mkFishHandoff =
+        {
+          parentCommand,
+          executionStringVar,
+          beforeExec ? "",
+          fishArgs ? "",
+        }:
+        ''
+          if [[ $(${parentCommand}) != "fish" && -z ${executionStringVar} ]]
+          then
+            ${beforeExec}
+            exec ${fishBin}${lib.optionalString (fishArgs != "") " ${fishArgs}"}
+          fi
+        '';
+    in
     {
       home.packages = with pkgs-unstable; [
         dnsutils
@@ -44,17 +61,29 @@
         neofetch = lib.mkIf config.programs.fastfetch.enable "fastfetch";
       };
 
-      # Keep bash as default shell and only use fish in interactive shells.
+      # Keep the OS login shell conventional for compatibility, but use fish
+      # for interactive sessions. Bash and Zsh need different guards because
+      # they have different startup variables and macOS uses BSD ps.
       # Source: https://nixos.wiki/wiki/Fish#Setting_fish_as_your_shell
-      programs.bash = {
+      programs.bash = lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
         enable = true;
-        initExtra = ''
-          if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
-          then
+        initExtra = mkFishHandoff {
+          parentCommand = "${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm";
+          executionStringVar = "''${BASH_EXECUTION_STRING}";
+          beforeExec = ''
             shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-            exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
-          fi
-        '';
+          '';
+          fishArgs = "$LOGIN_OPTION";
+        };
+      };
+
+      programs.zsh = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
+        enable = true;
+        initContent = mkFishHandoff {
+          parentCommand = "ps -o comm= -p \"$PPID\"";
+          executionStringVar = "''${ZSH_EXECUTION_STRING}";
+          fishArgs = "-l";
+        };
       };
 
       programs.fish = {
