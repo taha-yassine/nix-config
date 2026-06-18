@@ -69,7 +69,7 @@
         enable = true;
         initExtra = mkFishHandoff {
           parentCommand = "${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm";
-          executionStringVar = "''${BASH_EXECUTION_STRING}";
+          executionStringVar = "\${BASH_EXECUTION_STRING}";
           beforeExec = ''
             shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
           '';
@@ -81,7 +81,7 @@
         enable = true;
         initContent = mkFishHandoff {
           parentCommand = "ps -o comm= -p \"$PPID\"";
-          executionStringVar = "''${ZSH_EXECUTION_STRING}";
+          executionStringVar = "\${ZSH_EXECUTION_STRING}";
           fishArgs = "-l";
         };
       };
