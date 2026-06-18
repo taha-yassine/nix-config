@@ -5,8 +5,8 @@
       # Hibernation: resume from swap partition.
       boot.resumeDevice = "/dev/disk/by-uuid/d3320098-e418-402d-9720-e7602efe2223";
 
-      # Suspend-then-hibernate: suspend first, hibernate after 10 minutes of inactivity.
-      systemd.sleep.settings.Sleep.HibernateDelaySec = 600;
+      # Suspend-then-hibernate: suspend first, hibernate after 1 hour of inactivity.
+      systemd.sleep.settings.Sleep.HibernateDelaySec = 3600;
 
       # This is how lid close should be configured, but GNOME's gsd-power takes an inhibitor
       # lock on handle-lid-switch and handles suspend itself, bypassing these logind settings.
