@@ -11,6 +11,7 @@
     den.aspects."base-profile"
     containers
     den.aspects."dev-tools"
+    den.aspects."ai-tools"
     vscode
     zed
   ];

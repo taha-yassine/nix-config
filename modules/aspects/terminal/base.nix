@@ -190,17 +190,5 @@
       programs.ripgrep.enable = true;
       programs.fastfetch.enable = true;
       programs.spotify-player.enable = true;
-
-      xdg.configFile."aichat/config.yaml".text = lib.generators.toYAML { } {
-        prelude = "session:default";
-        model = "openrouter:anthropic/claude-3-5-haiku";
-        clients = [
-          {
-            type = "openai-compatible";
-            name = "openrouter";
-            api_base = "https://openrouter.ai/api/v1";
-          }
-        ];
-      };
     };
 }

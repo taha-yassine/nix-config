@@ -8,7 +8,6 @@
         code2prompt
         sqlitebrowser
         posting
-        claude-code
         cabextract
       ];
 
@@ -18,7 +17,6 @@
         nix-direnv.enable = true;
       };
 
-      programs.codex.enable = true;
       programs.pandoc.enable = true;
     };
 }

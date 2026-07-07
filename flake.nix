@@ -34,6 +34,8 @@
 
     affinity-nix.url = "github:mrshmllow/affinity-nix";
 
+    llm-agents.url = "github:numtide/llm-agents.nix";
+
     import-tree.url = "github:vic/import-tree";
     den.url = "github:denful/den";
     flake-parts.url = "github:hercules-ci/flake-parts";
