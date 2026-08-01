@@ -2,13 +2,13 @@
 {
   den.aspects.gnome = {
     nixos =
-      { pkgs, ... }:
+      { pkgs, primaryUserName, ... }:
       {
         services.displayManager.gdm.enable = true;
         services.desktopManager.gnome.enable = true;
 
         services.displayManager.autoLogin = {
-          user = "tyassine";
+          user = primaryUserName;
           enable = true;
         };
 
@@ -50,15 +50,15 @@
           tailscale-status
           quick-settings-audio-devices-hider
           brightness-control-using-ddcutil
-          (copyous.overrideAttrs (_old: {
-            buildInputs = [
-              pkgs-unstable.libgda5
-            ];
-            preInstall = ''
-              sed -i "1i import GIRepository from 'gi://GIRepository';\nGIRepository.Repository.dup_default().prepend_search_path('${pkgs-unstable.libgda5}/lib/girepository-1.0');\nGIRepository.Repository.dup_default().prepend_search_path('${pkgs-unstable.gsound}/lib/girepository-1.0');\n" lib/preferences/dependencies/dependencies.js
-              sed -i "1i import GIRepository from 'gi://GIRepository';\nGIRepository.Repository.dup_default().prepend_search_path('${pkgs-unstable.libgda5}/lib/girepository-1.0');\n" lib/misc/db.js
-            '';
-          })) # Fix from https://github.com/boerdereinar/copyous/issues/67#issuecomment-3983477333
+          # (copyous.overrideAttrs (_old: {
+          #   buildInputs = [
+          #     pkgs-unstable.libgda5
+          #   ];
+          #   preInstall = ''
+          #     sed -i "1i import GIRepository from 'gi://GIRepository';\nGIRepository.Repository.dup_default().prepend_search_path('${pkgs-unstable.libgda5}/lib/girepository-1.0');\nGIRepository.Repository.dup_default().prepend_search_path('${pkgs-unstable.gsound}/lib/girepository-1.0');\n" lib/preferences/dependencies/dependencies.js
+          #     sed -i "1i import GIRepository from 'gi://GIRepository';\nGIRepository.Repository.dup_default().prepend_search_path('${pkgs-unstable.libgda5}/lib/girepository-1.0');\n" lib/misc/db.js
+          #   '';
+          # })) # Fix from https://github.com/boerdereinar/copyous/issues/67#issuecomment-3983477333
           power-off-options
           all-in-one-clipboard
 

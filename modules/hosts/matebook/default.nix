@@ -10,7 +10,7 @@
     ];
 
     includes = with den.aspects; [
-      workstation
+      den.aspects.linux-workstation
       vm
     ];
   };

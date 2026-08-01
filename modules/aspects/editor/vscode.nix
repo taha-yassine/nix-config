@@ -1,10 +1,17 @@
+{ inputs, ... }:
 {
   den.aspects.vscode.homeManager =
     { pkgs-unstable, ... }:
+    let
+      llm-agents-pkgs = import inputs.llm-agents.inputs.nixpkgs {
+        system = pkgs-unstable.system;
+        config.allowUnfree = true;
+      };
+    in
     {
       programs.vscode = {
         enable = true;
-        package = pkgs-unstable.code-cursor;
+        package = llm-agents-pkgs.code-cursor;
         # package = pkgs-unstable.code-cursor.overrideAttrs (oldAttrs: rec {
         #   pname = "cursor";
         #   version = "2.0.43";

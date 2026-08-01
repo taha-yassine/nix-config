@@ -4,6 +4,7 @@
     {
       pkgs,
       pkgs-unstable,
+      self',
       lib,
       ...
     }:
@@ -46,7 +47,6 @@
           distrobox
           llama-cpp
           qbittorrent
-          gamescope
           ffmpeg
           vulkan-tools
           obsidian
@@ -58,13 +58,13 @@
           audacity
           smile
           rquickshare
-          heroic
           nvitop
           krita
           resources
           handbrake
           beeper
           codegrab
+          calibre
           # TODO: Remove this workaround once jellyfin-desktop v3 is packaged.
           # https://github.com/NixOS/nixpkgs/issues/519073#issuecomment-4434887630
           (jellyfin-media-player.overrideAttrs (old: {
@@ -87,7 +87,7 @@
         ])
         ++ [
           inputs.affinity-nix.packages.${pkgs.system}.default
-          pkgs.power-toggle
+          self'.packages.power-toggle
         ];
 
       programs.onlyoffice.enable = true;

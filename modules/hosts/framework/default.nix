@@ -2,7 +2,12 @@
 {
   den.aspects.framework = {
     nixos =
-      { pkgs, lib, ... }:
+      {
+        pkgs,
+        lib,
+        primaryUserName,
+        ...
+      }:
       {
         imports = [
           ./_hardware.nix
@@ -43,7 +48,7 @@
         virtualisation.docker.enable = true;
         # Required by ddcutil (used by brightness-control-using-ddcutil GNOME extension).
         hardware.i2c.enable = true;
-        users.users.tyassine.extraGroups = [
+        users.users.${primaryUserName}.extraGroups = [
           "docker"
           "i2c"
         ];
@@ -62,6 +67,11 @@
         services.power-profiles-daemon.enable = true;
 
         services.xserver.videoDrivers = [ "amdgpu" ];
+
+        # The Framework is also used for occasional gaming on its HiDPI panel.
+        programs.steam.package = pkgs.steam.override {
+          extraArgs = "-forcedesktopscaling=1.75";
+        };
 
         # Enable OBS virtual camera.
         programs.obs-studio = {
@@ -111,7 +121,11 @@
       };
 
     includes = with den.aspects; [
-      workstation
+      den.aspects.linux-workstation
+      gaming
+      android
+      cosmic
+      niri
       vm
     ];
   };

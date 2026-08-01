@@ -6,7 +6,13 @@
   den.hosts.aarch64-darwin.macbook.users.tahayassine = { };
 
   # All users get home-manager.
-  den.schema.user.classes = lib.mkDefault [ "homeManager" ];
+  den.schema.user = {
+    classes = lib.mkDefault [ "homeManager" ];
+    includes = [
+      den.batteries.host-aspects
+      den.batteries.primary-user
+    ];
+  };
 
   den.default.homeManager = {
     programs.home-manager.enable = true;

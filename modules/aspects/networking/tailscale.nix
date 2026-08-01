@@ -1,9 +1,11 @@
 {
-  den.aspects.tailscale.nixos = {
-    services.tailscale = {
-      enable = true;
-      useRoutingFeatures = "client";
-      extraSetFlags = [ "--operator=tyassine" ];
+  den.aspects.tailscale.nixos =
+    { primaryUserName, ... }:
+    {
+      services.tailscale = {
+        enable = true;
+        useRoutingFeatures = "client";
+        extraSetFlags = [ "--operator=${primaryUserName}" ];
+      };
     };
-  };
 }

@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  den.aspects.ai-tools.homeManager =
+  den.aspects.ai-dev-tools.homeManager =
     { lib, pkgs, ... }:
     let
       llm-agents = inputs.llm-agents.packages.${pkgs.system};

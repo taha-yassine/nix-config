@@ -1,14 +1,14 @@
 {
   den.aspects.vm.nixos =
-    { pkgs, ... }:
+    { pkgs, primaryUserName, ... }:
     {
       programs.virt-manager.enable = true;
 
-      users.users.tyassine.extraGroups = [ "libvirtd" ];
+      users.users.${primaryUserName}.extraGroups = [ "libvirtd" ];
 
       virtualisation.vmVariant = {
         users.mutableUsers = false;
-        users.users.tyassine.hashedPassword = "";
+        users.users.${primaryUserName}.hashedPassword = "";
       };
 
       environment.systemPackages = with pkgs; [

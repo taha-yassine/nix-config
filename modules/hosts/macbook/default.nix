@@ -13,9 +13,6 @@
         ];
       };
 
-    tahayassine.includes = [
-      den.batteries.primary-user
-      den.aspects.macos-dev-profile
-    ];
+    includes = [ den.aspects.developer ];
   };
 }

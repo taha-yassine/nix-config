@@ -7,23 +7,6 @@
       config,
       ...
     }:
-    let
-      fishBin = "${pkgs.fish}/bin/fish";
-      mkFishHandoff =
-        {
-          parentCommand,
-          executionStringVar,
-          beforeExec ? "",
-          fishArgs ? "",
-        }:
-        ''
-          if [[ $(${parentCommand}) != "fish" && -z ${executionStringVar} ]]
-          then
-            ${beforeExec}
-            exec ${fishBin}${lib.optionalString (fishArgs != "") " ${fishArgs}"}
-          fi
-        '';
-    in
     {
       home.packages = with pkgs-unstable; [
         dnsutils
@@ -44,7 +27,6 @@
 
         y = "yazi";
 
-        hm-rebuild = "home-manager switch --flake $HOME/nix-config";
         nfu = "nix flake update --flake $HOME/nix-config";
 
         lg = lib.mkIf config.programs.lazygit.enable "lazygit";
@@ -59,31 +41,6 @@
         '';
 
         neofetch = lib.mkIf config.programs.fastfetch.enable "fastfetch";
-      };
-
-      # Keep the OS login shell conventional for compatibility, but use fish
-      # for interactive sessions. Bash and Zsh need different guards because
-      # they have different startup variables and macOS uses BSD ps.
-      # Source: https://nixos.wiki/wiki/Fish#Setting_fish_as_your_shell
-      programs.bash = lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
-        enable = true;
-        initExtra = mkFishHandoff {
-          parentCommand = "${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm";
-          executionStringVar = "\${BASH_EXECUTION_STRING}";
-          beforeExec = ''
-            shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-          '';
-          fishArgs = "$LOGIN_OPTION";
-        };
-      };
-
-      programs.zsh = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
-        enable = true;
-        initContent = mkFishHandoff {
-          parentCommand = "ps -o comm= -p \"$PPID\"";
-          executionStringVar = "\${ZSH_EXECUTION_STRING}";
-          fishArgs = "-l";
-        };
       };
 
       programs.fish = {
